@@ -1,7 +1,10 @@
 package com.wasu.controller;
 
+import com.wasu.entity.User;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.xml.ws.RequestWrapper;
 
@@ -11,9 +14,12 @@ import javax.xml.ws.RequestWrapper;
 @Controller
 public class TestController {
 
-    public String sayHello(
-
-    ) {
-        return "Hello World!";
+    @RequestMapping(value = "/hello")
+    @ResponseBody
+    public User sayHello() {
+        User user = new User();
+        user.setUsername("admin");
+        user.setPassword("123456");
+        return user;
     }
 }
